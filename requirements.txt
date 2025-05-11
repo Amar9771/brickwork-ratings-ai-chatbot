@@ -1,5 +1,16 @@
-streamlit
+--force-reinstall
+
+# ✅ Pin numpy to avoid incompatibility with PyTorch
+numpy<2
+
+# ✅ Compatible versions of critical packages
 transformers==4.38.2
 torch==2.2.0
-reportlab
-numpy<2
+
+# ✅ Streamlit and PDF support
+streamlit==1.33.0
+reportlab==4.1.0
+
+# ✅ Optional but recommended utilities
+Pillow==10.2.0
+requests==2.31.0
