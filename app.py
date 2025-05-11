@@ -1,4 +1,7 @@
 import streamlit as st
+import torch
+from transformers import pipeline
+import streamlit as st
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
