@@ -1,4 +1,4 @@
-streamlit==1.21.0
-transformers==4.22.0
-reportlab==3.6.0
-torch==1.13.1
+streamlit==1.31.1
+transformers==4.38.2
+torch==2.2.0
+reportlab==3.6.12
