@@ -10,9 +10,8 @@ st.title("🤖 Brickwork Ratings — Free AI Assistant")
 st.markdown("Ask the assistant to generate a **Rating Rationale** based on company financials.")
 
 # ----------------- Load Model -----------------
-@st.cache_resource
 def load_model():
-    model_name = "google/flan-t5-large"
+    model_name = "google/flan-t5-large"  # You can choose a smaller model like "flan-t5-small" for quicker loading
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
     return tokenizer, model
@@ -57,7 +56,7 @@ answer = ""
 if st.button("📝 Generate Rating Rationale"):
     with st.spinner("Analyzing company data and drafting rationale..."):
         input_ids = tokenizer(prompt, return_tensors="pt").input_ids
-        outputs = model.generate(input_ids, max_length=1024, do_sample=False)
+        outputs = model.generate(input_ids, max_length=512, do_sample=False)
         answer = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
     # Display Result
@@ -95,8 +94,4 @@ if st.button("📝 Generate Rating Rationale"):
         )
 
     # Cleanup temporary file
-    try:
-        if os.path.exists(pdf_file):
-            os.remove(pdf_file)
-    except Exception as e:
-        st.error(f"Error while deleting the PDF file: {str(e)}")
+    os.remove(pdf_file)
